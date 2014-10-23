@@ -1,0 +1,31 @@
+@(title: String)(head: Html)(body: Html)
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@title</title>
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("app/favicon.png")'>
+
+    <!-- jQuery -->
+    <script src='@routes.Assets.at("lib/jquery/jquery-1.9.1.min.js")' type="text/javascript"></script>
+
+    <!-- Underscore -->
+    <script src='@routes.Assets.at("lib/underscore/underscore-1.4.4.min.js")' type="text/javascript"></script>
+
+
+    <!-- App -->
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("theme/site.css")'>
+    <script type="text/javascript" src='@routes.Assets.at("lib/site.js")'></script>
+
+    <!-- App Page -->
+    @head
+
+</head>
+<body>
+    @body
+</body>
+</html>

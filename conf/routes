@@ -2,8 +2,16 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.Application.index()
-
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
+
+
+# Mouse
+GET     /                            controllers.Mouse.index
+GET     /mouse                       controllers.Mouse.index
+GET     /mouse/remote                controllers.Mouse.remote
+
+GET     /mouse/coords/set/:x/:y      controllers.Mouse.moveCoords(x: Int, y: Int)
+## GET     /mouse/coords/set            controllers.Mouse.setCoords(x: Int ?= 20, y: Int ?= 10)
+

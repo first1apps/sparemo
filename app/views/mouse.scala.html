@@ -1,0 +1,88 @@
+@()(implicit request: RequestHeader)
+
+@theme.bare("Mouse Remote Control") {
+
+    <!-- Touch Swipe -->
+    <script src='@routes.Assets.at("lib/touch-swipe/jquery.touchSwipe.min.js")' type="text/javascript"></script>
+
+    <!-- SpareJs jQuery -->
+    <script type="text/javascript" src='@routes.Assets.at("lib/spare-jquery/spare-jquery.js")'></script>
+
+    @helper.requireJs(core = routes.Assets.at("javascripts/require.js").url, module = routes.Assets.at("lib/site").url)
+
+    <!-- App - Mouse -->
+    <link type="text/css" rel="stylesheet" href='@routes.Assets.at("lib/app-web-remote/remote.css")' />
+    <script type="text/javascript" src='@routes.Assets.at("lib/app-web-remote/web-remote.js")'></script>
+
+    <style type="text/css">
+        html, body {
+            overflow: hidden;
+            font-family: Arial;
+        }
+
+        #appRemote {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        #textbox {
+            display: block;
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        #buttons {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            margin: 0;
+            padding: 0 10px;
+
+            color: #333;
+            background: #ddd;
+            border-bottom-left-radius: 10px;
+        }
+
+        #buttons > li {
+            margin: 0 1px;
+            line-height: 34px;
+            font-size: 24px;
+            display: inline-block;
+        }
+    </style>
+
+    <script type="text/javascript">
+        site.init(function($) {
+            site.webRemote.setSocketUrl("@routes.Mouse.remote().webSocketURL()");
+            site.webRemote.attach($("#appRemote"));
+        });
+    </script>
+
+} {
+
+    <div class="app-remote" id="appRemote">
+        <div class="app-remote-mousepad" id="mousepad">
+        </div>
+
+        <ul id="buttons">
+            <li>
+                <div id="keyboardTrigger">Keyboard</div>
+            </li>
+        </ul>
+
+        <input type="text" id="textbox" class="app-remote-keypad" />
+
+    </div>
+
+}
